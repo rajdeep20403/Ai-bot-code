@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotionally Intelligent AI Speechbot</title>
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+}
+
+#conversational-interface {
+    background-color: #f7f7f7;
+    padding: 1em;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#user-input {
+    width: 100%;
+    padding: 1em;
+    font-size: 1.5em;
+    border: 1px solid #ccc;
+}
+
+#send-button {
+    background-color: #333;
+    color: #fff;
+    padding: 1em 2em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#response-display {
+    padding: 1em;
+    font-size: 1.5em;
+}
+
+#emotion-display {
+    background-color: #f7f7f7;
+    padding: 1em;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#emotion-indicator {
+    font-size: 3em;
+    color: #333;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Emotionally Intelligent AI Speechbot</h1>
+    </header>
+    <main>
+        <section id="conversational-interface">
+            <h2>Conversational Interface</h2>
+            <input type="text" id="user-input" placeholder="Type a message...">
+            <button id="send-button">Send</button>
+            <div id="response-display"></div>
+        </section>
+        <section id="emotion-display">
+            <h2>Emotion Display</h2>
+            <div id="emotion-indicator"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Emotionally Intelligent AI Speechbot</p>
+    </footer>
+    <script>
+      const userInput = document.getElementById('user-input');
+const sendButton = document.getElementById('send-button');
+const responseDisplay = document.getElementById('response-display');
+const emotionIndicator = document.getElementById('emotion-indicator');
+
+
+function detectEmotion() {
+    
+    const speechRecognition = new webkitSpeechRecognition();
+    speechRecognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        const emotion = analyzeTranscript(transcript);
+        emotionIndicator.textContent = emotion;
+    };
+    speechRecognition.start();
+}
+
+function handleUserInput() {
+    const userInputValue = userInput.value;
+    const response = generateResponse(userInputValue);
+    responseDisplay.textContent = response;
+}
+
+function generateResponse(userInputValue) {
+    return 'Hello, how are you?';
+}
+
+function analyzeTranscript(transcript) {
+    return 'Happy';
+}
+
+sendButton.addEventListener('click', handleUserInput);
+    </script>
+</body>
+</html>
